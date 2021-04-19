@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SimpleComponents</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/802bed7a0e.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <div class="row mt-4">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <%= link_to("Home", "/", class: "nav-link") %> 
+        </li>
+        <li class="nav-item">
+          <%= link_to("Users", users_path, class: "nav-link") %> 
+        </li>
+        <li class="nav-item">
+          <%= link_to("Projects", projects_path, class: "nav-link") %> 
+        </li>
+      </ul>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>

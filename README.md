@@ -1,0 +1,3 @@
+# README
+
+Experimentations with ViewComponents.

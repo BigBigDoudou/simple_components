@@ -1,0 +1,34 @@
+# frozen_string_literal: true
+
+module Ui
+  # Table component
+  class Table
+    delegate :tag, :concat, :content_tag, to: :@template
+
+    def initialize(collection, template, options)
+      @collection = collection
+      @options = options
+      @template = template
+      @node = Tree::TreeNode.new("root")
+    end
+
+    def build
+      tag.table(class: "table") do
+        concat tag.thead
+        concat(tag.tbody do
+          @collection.each do |record|
+            @node.each_leaf do |leaf|
+              leaf.content(record)
+            end
+          end
+        end)
+      end
+    end
+
+    def column(attribute)
+      child = @node << Tree::TreeNode.new(attribute)
+      column = tag.td(attribute)
+      child.content = column
+    end
+  end
+end
